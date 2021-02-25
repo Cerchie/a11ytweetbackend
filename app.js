@@ -18,7 +18,7 @@ const cors = require("cors")
 app.use(express.json())
 app.use(morgan("tiny"))
 app.use(authenticateJWT)
-app.use(cors({ origin: ["http://localhost:3000"] }))
+app.use(cors({ origin: ["https://clever-kare-b13870.netlify.app/"] }))
 //have to add more when I deploy on heroku
 
 //establishing first url subdirectories
