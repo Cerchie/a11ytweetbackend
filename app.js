@@ -34,7 +34,13 @@ app.use(
     cors({
         origin: "https://clever-kare-b13870.netlify.app",
         methods: ["GET", "PUT", "POST", "DELETE"],
-        allowedHeaders: ["Content-Type", "Accept", "x-access-token", "X-Key"],
+        allowedHeaders: [
+            "Content-Type",
+            "Accept",
+            "x-access-token",
+            "X-Key",
+            "Access-Control-Allow-Origin",
+        ],
     })
 );
 
