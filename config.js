@@ -1,7 +1,7 @@
 "use strict"
 
 /** Shared config for application; can be required many places. */
-
+require("cors")
 require("dotenv").config()
 require("colors")
 
