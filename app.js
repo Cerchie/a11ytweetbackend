@@ -38,9 +38,10 @@ app.use(
     })
 );
 
-app.use(function (req, res, next) {
-    if (req.method === "OPTIONS") {
-        res.status(200).end();
+app.use("*", (req, res, next) => {
+    if (req.method == "OPTIONS") {
+        res.status(200);
+        res.send();
     } else {
         next();
     }
