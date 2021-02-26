@@ -20,7 +20,7 @@ app.use(morgan("tiny"));
 
 app.use(cors({ origin: "*" }));
 
-app.use(authenticateJWT);
+// app.use(authenticateJWT);
 
 //establishing first url subdirectories
 
