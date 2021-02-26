@@ -52,7 +52,12 @@ app.use("*", (req, res, next) => {
         next();
     }
 });
-
+app.use(function (req, res, next) {
+    res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://clever-kare-b13870.netlify.app"
+    );
+});
 /** Generic error handler; anything unhandled goes here. */
 app.use(function (err, req, res, next) {
     if (process.env.NODE_ENV !== "test") console.error(err.stack);
