@@ -1,7 +1,5 @@
 "use strict";
 
-const proxy = require("http-proxy-middleware");
-
 const express = require("express"); //grabbing express
 
 const { NotFoundError } = require("./expressError"); //going to need this for rendering routes
@@ -20,7 +18,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(morgan("tiny"));
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://clever-kare-b13870.netlify.app" }));
 
 app.use(authenticateJWT);
 
@@ -43,13 +41,5 @@ app.use(function (err, req, res, next) {
     });
 });
 
-module.exports = function (app) {
-    app.use(
-        proxy("/api", {
-            target: "http://www.api.com",
-            logLevel: "debug",
-            changeOrigin: true,
-        })
-    );
-};
+module.exports = app;
 //adapted from Springboard bootcamp setup https://www.springboard.com/workshops/software-engineering-career-track
