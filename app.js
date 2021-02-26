@@ -29,7 +29,13 @@ app.use("/users", usersRoutes);
 app.use(function (req, res, next) {
     return next(new NotFoundError());
 });
-
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://clever-kare-b13870.netlify.app"
+    );
+});
 app.use(
     cors({
         origin: "https://clever-kare-b13870.netlify.app",
