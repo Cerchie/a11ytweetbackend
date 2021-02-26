@@ -9,7 +9,7 @@ const ExpressError = require("../expressError");
 
 function authenticateJWT(req, res, next) {
     try {
-        const authHeader = req.headers && req.headers.authorization;
+        const authHeader = req.headers && req.headers.Authorization;
         console.log(authHeader);
         if (authHeader) {
             const token = authHeader.replace(/^[Bb]earer /, "").trim();
