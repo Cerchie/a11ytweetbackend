@@ -1,5 +1,7 @@
 "use strict";
 
+const proxy = require("http-proxy-middleware");
+
 const express = require("express"); //grabbing express
 
 const { NotFoundError } = require("./expressError"); //going to need this for rendering routes
@@ -41,5 +43,13 @@ app.use(function (err, req, res, next) {
     });
 });
 
-module.exports = app;
+module.exports = function (app) {
+    app.use(
+        proxy("/clever-kare-b13870", {
+            target: "https://clever-kare-b13870.netlify.app/",
+            logLevel: "debug",
+            changeOrigin: true,
+        })
+    );
+};
 //adapted from Springboard bootcamp setup https://www.springboard.com/workshops/software-engineering-career-track
