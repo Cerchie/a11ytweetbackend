@@ -45,8 +45,8 @@ app.use(function (err, req, res, next) {
 
 module.exports = function (app) {
     app.use(
-        proxy("/clever-kare-b13870", {
-            target: "https://clever-kare-b13870.netlify.app/",
+        proxy("/api", {
+            target: "http://www.api.com",
             logLevel: "debug",
             changeOrigin: true,
         })
