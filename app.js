@@ -18,7 +18,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(morgan("tiny"));
 
-app.use(cors({ origin: "https://clever-kare-b13870.netlify.app" }));
+app.use(cors({ origin: "*" }));
 
 app.use(authenticateJWT);
 
