@@ -31,14 +31,12 @@ app.use(function (req, res, next) {
 });
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader(
-        "Access-Control-Allow-Origin",
-        "https://clever-kare-b13870.netlify.app"
-    );
+    res.setHeader("Access-Control-Allow-Origin", "*");
 });
+
 app.use(
     cors({
-        origin: "https://clever-kare-b13870.netlify.app",
+        origin: "*",
         methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
         allowedHeaders: [
             "Content-Type",
