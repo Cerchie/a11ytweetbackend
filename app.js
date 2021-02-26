@@ -17,9 +17,10 @@ const cors = require("cors");
 //registering our middleware below
 app.use(express.json());
 app.use(morgan("tiny"));
-app.use(authenticateJWT);
 
 app.use(cors({ origin: "https://clever-kare-b13870.netlify.app" }));
+
+app.use(authenticateJWT);
 
 //establishing first url subdirectories
 
