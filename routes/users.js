@@ -13,19 +13,19 @@ const router = express.Router();
 
 router.post("/", async function (req, res, next) {
     try {
-        // const validator = jsonschema.validate(req.body, userNewSchema);
-        // if (!validator.valid) {
-        //     const errs = validator.errors.map((e) => e.stack);
-        //     throw new BadRequestError(errs);
-        // }
-        // const user = await User.register(
-        //     req.body.user.username,
-        //     req.body.user.password
-        // );
+        const validator = jsonschema.validate(req.body, userNewSchema);
+        if (!validator.valid) {
+            const errs = validator.errors.map((e) => e.stack);
+            throw new BadRequestError(errs);
+        }
+        const user = await User.register(
+            req.body.user.username,
+            req.body.user.password
+        );
 
-        // const token = createToken(user);
+        const token = createToken(user);
 
-        return res.status(201).json();
+        return res.status(201).json({ user, token });
     } catch (err) {
         return next(err);
     }
