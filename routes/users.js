@@ -24,7 +24,7 @@ router.post("/", async function (req, res, next) {
         );
 
         const token = createToken(user);
-        res.setHeader("Access-Control-Allow-Origin", "*");
+
         return res.status(201).json({ user, token });
     } catch (err) {
         return next(err);
@@ -46,7 +46,7 @@ router.post("/token", async function (req, res, next) {
         const user = await User.authenticate(username, password);
 
         const token = createToken(user);
-        res.setHeader("Access-Control-Allow-Origin", "*");
+
         return res.status(201).json({ token });
     } catch (err) {
         return next(err);
