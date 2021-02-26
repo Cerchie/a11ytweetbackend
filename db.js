@@ -1,14 +1,17 @@
-"use strict"
+"use strict";
 
 /** Database setup . */
 
-const { Client } = require("pg")
-const { getDatabaseUri } = require("./config")
+const { Client } = require("pg");
+const { getDatabaseUri } = require("./config");
 
 const db = new Client({
     connectionString: getDatabaseUri(),
-})
+    ssl: {
+        rejectUnauthorized: false,
+    },
+});
 
-db.connect()
+db.connect();
 
-module.exports = db
+module.exports = db;
