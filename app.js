@@ -44,20 +44,7 @@ app.use(
     })
 );
 
-app.use("*", (req, res, next) => {
-    if (req.method == "OPTIONS") {
-        res.status(200);
-        res.send();
-    } else {
-        next();
-    }
-});
-app.use(function (req, res, next) {
-    res.setHeader(
-        "Access-Control-Allow-Origin",
-        "https://clever-kare-b13870.netlify.app"
-    );
-});
+app.options("*", cors());
 /** Generic error handler; anything unhandled goes here. */
 app.use(function (err, req, res, next) {
     if (process.env.NODE_ENV !== "test") console.error(err.stack);
