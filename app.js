@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 
 app.use(
     cors({
-        origin: "https://clever-kare-b13870.netlify.app",
+        origin: "*",
         methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
         allowedHeaders: [
             "Content-Type",
