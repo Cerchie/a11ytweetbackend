@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
 
-//have to add more when I deploy on heroku
+app.use(cors());
 
 //establishing first url subdirectories
 
@@ -29,26 +29,6 @@ app.use("/users", usersRoutes);
 app.use(function (req, res, next) {
     return next(new NotFoundError());
 });
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader("Access-Control-Allow-Origin", "*");
-});
-
-app.use(
-    cors({
-        origin: "*",
-        methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
-        allowedHeaders: [
-            "Content-Type",
-            "Accept",
-            "x-access-token",
-            "X-Key",
-            "Access-Control-Allow-Origin",
-        ],
-    })
-);
-
-app.options("*", cors());
 /** Generic error handler; anything unhandled goes here. */
 app.use(function (err, req, res, next) {
     if (process.env.NODE_ENV !== "test") console.error(err.stack);
