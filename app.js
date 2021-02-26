@@ -19,12 +19,8 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
 
-app.use(cors());
+app.use(cors({ origin: "https://clever-kare-b13870.netlify.app" }));
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-});
 //establishing first url subdirectories
 
 app.use("/users", usersRoutes);
